@@ -62,7 +62,6 @@ JULIA_NUM_THREADS=8 julia khill_complexity.jl ...
 | `-k` | Yes      | String   | K-mer size or range, e.g. `"9"` or `"5-50"` |
 | `-t` | Yes      | String   | Taxon identifier (label used in `structure.out`) |
 | `-n` | Yes      | Int      | Sampling rate (see below) |
-| `-p` | No       | Int      | Number of Julia threads to use (default `1`) |
 | `-c` | No       | Int      | Canonical kmers: `0` = as-is, `1` = canonical (min of k-mer and reverse-complement) |
 | `-s` | No       | Float64  | K-mer limit per genome per k (default `1e99` = effectively no limit) |
 | `-a` | No       | Int      | Presence/absence mode: `0` = count multiplicity, `1` = presence/absence per genome |
