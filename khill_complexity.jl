@@ -17,7 +17,6 @@ mutable struct Options
     kmer::String
     taxa::String
     number::Int
-    procs::Int
     canonical::Int
     kmerlim::Float64
     presabs::Int
@@ -49,10 +48,6 @@ function get_options()::Options
             help = "Sampling rate"
             arg_type = Int
             required = true
-        "-p"
-            help = "Number of processes/threads"
-            arg_type = Int
-            default = 1
         "-c"
             help = "Canonical kmers (0/1)"
             arg_type = Int
@@ -79,7 +74,6 @@ function get_options()::Options
         parsed["k"],
         parsed["t"],
         parsed["n"],
-        parsed["p"],
         parsed["c"],
         parsed["s"],
         parsed["a"],
@@ -99,7 +93,12 @@ function open_text_maybe_gzip(path::String)
     end
 end
 
-#Returns all concatenated sequences (uppercase) from a FASTA file.
+"""
+    parse_fasta_sequences(path) -> Vector{String}
+
+Returns all concatenated sequences (uppercase) from a FASTA file.
+Equivalent to the awk one-liner behavior in the Perl script.
+"""
 function parse_fasta_sequences(path::String)::Vector{String}
     io = open_text_maybe_gzip(path)
     sequences = String[]
