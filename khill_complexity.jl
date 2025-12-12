@@ -99,12 +99,7 @@ function open_text_maybe_gzip(path::String)
     end
 end
 
-"""
-    parse_fasta_sequences(path) -> Vector{String}
-
-Returns all concatenated sequences (uppercase) from a FASTA file.
-Equivalent to the awk one-liner behavior in the Perl script.
-"""
+#Returns all concatenated sequences (uppercase) from a FASTA file.
 function parse_fasta_sequences(path::String)::Vector{String}
     io = open_text_maybe_gzip(path)
     sequences = String[]
